@@ -1,27 +1,25 @@
 # Fleet
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+Esse projeto foi gerado utilizando [Angular CLI](https://github.com/angular/angular-cli) versão 17.1.2.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Execute o comando `ng serve` ou `npm start` para rodar o projeto. Navegue para `http://localhost:4200/` e conseguirá visualizá-lo.
 
-## Code scaffolding
+## Rodando testes unitários
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Execute o comando `ng test` para ver a cobertura de testes via [Karma](https://karma-runner.github.io).
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para conseguir mais ajuda sobre o Angular CLI execute `ng help` ou vá até a página oficial [Angular CLI Overview and Command Reference](https://angular.io/cli)/
+
+## Sobre o projeto
+
+O projeto foi desenvolvido utilizando o wireframe e design system disponibilizados, tentei deixar o mais parecido utilizando apenas os componentes do design system (Ant Design).
+
+Utilizei a biblioteca bootstrap para me ajudar no uso das grids e ícones(vendo que alguns da biblioteca Ant Design não funcionavam), também usei ngx-mask para auxiliar em validações do formulário.
+
+Sobre o testes unitários, consegui passar da cobertura de 70%, mas alguns testes estavam quebrando, maior parte nas classes do design system (Ant Design), então acabei os removendo e a cobertura caiu um pouco.
+
+As funções estaram documentas para melhor entendimento.
