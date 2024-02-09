@@ -27,7 +27,6 @@ export class VeiculosComponent implements OnInit{
   ngOnInit(): void {
     this.getVeiculos(null);
     this.searchField.valueChanges.pipe(
-      map(value => value.trim()),
       debounceTime(200),
       distinctUntilChanged(),
       tap(value => this.getVeiculos(value))
