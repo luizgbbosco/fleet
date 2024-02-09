@@ -13,7 +13,10 @@ export class NovoVeiculoComponent {
   public isVisible = true;
   public formVeiculo: FormGroup<any>;
 
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder){  
+    /**
+     * Inicializa o formulario.
+    */
     this.formVeiculo = new FormGroup({
       marca: new FormControl<string>('', Validators.required),
       modelo: new FormControl<string>('', Validators.required),
@@ -28,11 +31,18 @@ export class NovoVeiculoComponent {
     })
   }
 
+  /**
+   * Emite um evento para o componente pai com o formulário preenchido, para adicionar um novo veículo.
+   * @returns {emit} Emite um evento para o componente pai contendo o formulario, para que seja adicionado.
+  */
   handleOk(): void {
     this.isVisible = false;
     this.closeModal.emit(this.formVeiculo.value);
   }
 
+  /**
+   * Emite um evento para o componente pai, apenas para que o modal seja fechado.
+  */
   handleCancel(): void {
     this.isVisible = false;
     this.closeModal.emit(null);
