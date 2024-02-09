@@ -18,7 +18,6 @@ describe('VeiculosComponent', () => {
   let component: VeiculosComponent;
   let fixture: ComponentFixture<VeiculosComponent>;
   let veiculosServiceSpy: jasmine.SpyObj<VeiculosService>;
-  let notificationServiceSpy: jasmine.SpyObj<NzNotificationService>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -49,12 +48,12 @@ describe('VeiculosComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call searchVeiculos("") on ngOnInit()', () => {
-    const searchVeiculosSpy = spyOn(component, 'searchVeiculos');
+  it('should call getVeiculos() on ngOnInit()', () => {
+    const searchVeiculosSpy = spyOn(component, 'getVeiculos');
 
     component.ngOnInit();
 
-    expect(searchVeiculosSpy).toHaveBeenCalledWith('');
+    expect(searchVeiculosSpy).toHaveBeenCalledWith(null);
   });
 
   it('should open modal', () => {
@@ -119,5 +118,20 @@ describe('VeiculosComponent', () => {
     const novoVeiculoElement = compiled.querySelector('app-novo-veiculo');
     expect(novoVeiculoElement).toBeFalsy();
   });
+
+  /*it('should delete veiculo and reset data', () => {
+    const dummyVeiculoId = 1;
+    component.deleteVeiculo(dummyVeiculoId);
+    expect(component.loading).toBe(true);
+    expect(veiculosServiceSpy.deleteVeiculo).toHaveBeenCalledWith(dummyVeiculoId);
+  });
+
+  it('should close modal and reset data', () => {
+    const dummyEvent = { data: 'dummy' };
+    component.closeModal(dummyEvent);
+    expect(component.showModal).toBe(false);
+    expect(component.loading).toBe(false);
+    expect(veiculosServiceSpy.createVeiculo).toHaveBeenCalledWith(dummyEvent);
+  });*/
 
 });

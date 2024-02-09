@@ -23,9 +23,8 @@ describe('VeiculosService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should fetch veiculos from API without filter', () => {
-    const filter = '';
-    const mockData = [
+  it('should retrieve veiculos from API via GET without filter', () => {
+    const dummyVeiculos = [
       {
         marca: "Fiat",
         modelo: "Uno",
@@ -40,13 +39,14 @@ describe('VeiculosService', () => {
       }
     ];
 
-    service.getVeiculosFilter(filter).subscribe((data) => {
-      expect(data).toEqual(mockData);
+    service.getVeiculos().subscribe(veiculos => {
+      expect(veiculos.length).toBe(1);
+      expect(veiculos).toEqual(dummyVeiculos);
     });
 
-    const req = httpMock.expectOne(`${service.URL_API}`);
+    const req = httpMock.expectOne(service.URL_API);
     expect(req.request.method).toBe('GET');
-    req.flush(mockData);
+    req.flush(dummyVeiculos);
   });
 
   it('should fetch veiculos from API', () => {
