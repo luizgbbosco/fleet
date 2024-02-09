@@ -1,0 +1,78 @@
+<nz-modal
+    [nzStyle]="{ width: '800px' }"
+    [(nzVisible)]="isVisible"
+    [nzTitle]="modalTitle"
+    [nzContent]="modalContent"
+    [nzFooter]="modalFooter"
+    (nzOnCancel)="handleCancel()"
+>
+    <ng-template #modalTitle>Adicionar novo veículo</ng-template>
+
+    <ng-template #modalContent>
+        <form [formGroup]="formVeiculo">
+            <div class="row">
+                <div class="col-6">
+                    <span class="fw-b">Marca</span>
+                    <input class="mt-2" nz-input formControlName="marca" type="text" />
+                </div>
+                <div class="col-6">
+                    <span class="fw-b">Modelo</span>
+                    <input class="mt-2" nz-input formControlName="modelo" type="text" />
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <span class="fw-b">Versão</span>
+                    <input class="mt-2" nz-input formControlName="versao" type="text" />
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6">
+                    <span class="fw-b">Ano Fabricacao</span>
+                    <input class="mt-2" nz-input formControlName="anoFabricacao" type="text" mask="0000"/>
+                </div>
+                <div class="col-6">
+                    <span class="fw-b">Ano Modelo</span>
+                    <input class="mt-2" nz-input formControlName="anoModelo" type="text" mask="0000"/>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6">
+                    <span class="fw-b">Cor</span>
+                    <input class="mt-2" nz-input formControlName="cor" type="text" />
+                </div>
+                <div class="col-6">
+                    <span class="fw-b">É Blindado?</span>
+                    <br>
+                    <input class="checkbox mt-3" type="checkbox" formControlName="blindado">
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6">
+                    <span class="fw-b">Kilometragem</span>
+                    <input class="mt-2" nz-input formControlName="kilometragem" type="text" mask="000000"/>
+                </div>
+                <div class="col-6">
+                    <span class="fw-b">Placa</span>
+                    <input class="mt-2" nz-input formControlName="placa" type="text" mask="SSS0S00"/>
+                </div>
+            </div>
+            <div class="row mt-4 mb-2">
+                <div class="col-6">
+                    <span class="fw-b">Renavam</span>
+                    <input class="mt-2" nz-input formControlName="renavam" type="text" mask="00000000000"/>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+
+    <ng-template #modalFooter>
+        <button nz-button nzType="default" (click)="handleCancel()">Voltar</button>
+        <button *ngIf="formVeiculo.valid" nz-button nzType="primary" (click)="handleOk()">
+            <i class="bi bi-plus-lg"></i> Adicionar
+        </button>
+        <button *ngIf="!formVeiculo.valid" nz-button nzType="primary" (click)="handleOk()" disabled>
+            <i class="bi bi-plus-lg"></i> Adicionar
+        </button>
+    </ng-template>
+</nz-modal>

@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-10">
+            <nz-input-group [nzSuffix]="suffixIconSearch">
+                <input type="text" nz-input placeholder="Buscar..." [formControl]="searchField" />
+            </nz-input-group>
+            <ng-template #suffixIconSearch>
+                <span nz-icon nzType="search"></span>
+            </ng-template>
+        </div>
+        <div class="col-2 d-flex justify-content-end">
+            <button nz-button nzType="default" (click)="openModal()">
+                <i class="bi bi-plus-lg"></i>
+                Adicionar
+            </button>
+            
+        </div>
+    </div>
+</div>
+
+<div class="container d-flex justify-content-center mt-5" *ngIf="dataVeiculos.length === 0">
+    <h4>Nenhum veículo encontrado.</h4>
+</div>
+
+<div class="container" *ngIf="!loading">
+    <app-card-veiculo *ngFor="let item of dataVeiculos" [item]="item" (deleteVeiculo)="deleteVeiculo($event)"></app-card-veiculo>
+</div>
+
+<nz-spin class="d-flex justify-content-center mt-5" nzSimple *ngIf="loading"></nz-spin> 
+
+<app-novo-veiculo *ngIf="showModal" (closeModal)="closeModal($event)"></app-novo-veiculo>
