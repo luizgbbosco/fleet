@@ -13,54 +13,54 @@
             <div class="row">
                 <div class="col-6">
                     <span class="fw-b">Marca</span>
-                    <input style="margin-top: 1vh;" nz-input formControlName="marca" type="text" />
+                    <input class="mt-2" nz-input formControlName="marca" type="text" />
                 </div>
                 <div class="col-6">
                     <span class="fw-b">Modelo</span>
-                    <input style="margin-top: 1vh;" nz-input formControlName="modelo" type="text" />
+                    <input class="mt-2" nz-input formControlName="modelo" type="text" />
                 </div>
             </div>
-            <div class="row" style="margin-top: 2vh;">
+            <div class="row mt-4">
                 <div class="col-12">
                     <span class="fw-b">Versão</span>
-                    <input style="margin-top: 1vh;" nz-input formControlName="versao" type="text" />
+                    <input class="mt-2" nz-input formControlName="versao" type="text" />
                 </div>
             </div>
-            <div class="row" style="margin-top: 2vh;">
+            <div class="row mt-4">
                 <div class="col-6">
                     <span class="fw-b">Ano Fabricacao</span>
-                    <input style="margin-top: 1vh;" nz-input formControlName="anoFabricacao" type="text" mask="0000"/>
+                    <input class="mt-2" nz-input formControlName="anoFabricacao" type="text" mask="0000"/>
                 </div>
                 <div class="col-6">
                     <span class="fw-b">Ano Modelo</span>
-                    <input style="margin-top: 1vh;" nz-input formControlName="anoModelo" type="text" mask="0000"/>
+                    <input class="mt-2" nz-input formControlName="anoModelo" type="text" mask="0000"/>
                 </div>
             </div>
-            <div class="row" style="margin-top: 2vh;">
+            <div class="row mt-4">
                 <div class="col-6">
                     <span class="fw-b">Cor</span>
-                    <input style="margin-top: 1vh;" nz-input formControlName="cor" type="text" />
+                    <input class="mt-2" nz-input formControlName="cor" type="text" />
                 </div>
                 <div class="col-6">
                     <span class="fw-b">É Blindado?</span>
                     <br>
-                    <label style="margin-top: 1vh;" nz-checkbox formControlName="blindado"></label>
+                    <label class="mt-2" nz-checkbox formControlName="blindado"></label>
                 </div>
             </div>
-            <div class="row" style="margin-top: 2vh;">
+            <div class="row mt-4">
                 <div class="col-6">
                     <span class="fw-b">Kilometragem</span>
-                    <input style="margin-top: 1vh;" nz-input formControlName="kilometragem" type="text" mask="000000"/>
+                    <input class="mt-2" nz-input formControlName="kilometragem" type="text" mask="000000"/>
                 </div>
                 <div class="col-6">
                     <span class="fw-b">Placa</span>
-                    <input style="margin-top: 1vh;" nz-input formControlName="placa" type="text" mask="SSS0S00"/>
+                    <input class="mt-2" nz-input formControlName="placa" type="text" mask="SSS0S00"/>
                 </div>
             </div>
-            <div class="row" style="margin-top: 2vh; margin-bottom: 2vh;">
+            <div class="row mt-4 mb-2">
                 <div class="col-6">
                     <span class="fw-b">Renavam</span>
-                    <input style="margin-top: 1vh;" nz-input formControlName="renavam" type="text" mask="00000000000"/>
+                    <input class="mt-2" nz-input formControlName="renavam" type="text" mask="00000000000"/>
                 </div>
             </div>
         </form>
@@ -69,10 +69,10 @@
     <ng-template #modalFooter>
         <button nz-button nzType="default" (click)="handleCancel()">Voltar</button>
         <button *ngIf="formVeiculo.valid" nz-button nzType="primary" (click)="handleOk()">
-            <i class="bi bi-plus-lg" style="margin-right: 10px;"></i> Adicionar
+            <i class="bi bi-plus-lg"></i> Adicionar
         </button>
         <button *ngIf="!formVeiculo.valid" nz-button nzType="primary" (click)="handleOk()" disabled>
-            <i class="bi bi-plus-lg" style="margin-right: 10px;"></i> Adicionar
+            <i class="bi bi-plus-lg"></i> Adicionar
         </button>
     </ng-template>
 </nz-modal>

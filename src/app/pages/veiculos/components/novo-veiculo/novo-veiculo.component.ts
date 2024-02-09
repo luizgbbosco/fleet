@@ -6,9 +6,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   templateUrl: './novo-veiculo.component.html',
   styleUrl: './novo-veiculo.component.scss'
 })
-export class NovoVeiculoComponent implements OnInit {
+export class NovoVeiculoComponent {
 
-  @Output() closeModal = new EventEmitter<boolean>();
+  @Output() closeModal = new EventEmitter<any>();
 
   public isVisible = true;
   public formVeiculo: FormGroup<any>;
@@ -20,30 +20,22 @@ export class NovoVeiculoComponent implements OnInit {
       versao: new FormControl<string>('', Validators.required),
       anoFabricacao: new FormControl<string>('', Validators.required),
       anoModelo: new FormControl<string>('', Validators.required),
-      cor: new FormControl<string>('', Validators.required),
+      cor: new FormControl<string>(''),
       blindado: new FormControl<boolean>(false),
-      kilometragem: new FormControl<string>('', Validators.required),
+      kilometragem: new FormControl<string>(''),
       placa: new FormControl<string>('', Validators.required),
       renavam: new FormControl<string>('', Validators.required)
     })
   }
 
-  ngOnInit(): void {
-    this.createForm();
-  }
-
-  createForm(){
-
-  }
-
   handleOk(): void {
-    console.log(this.formVeiculo.value);
     this.isVisible = false;
-    this.closeModal.emit(false);
+    this.closeModal.emit(this.formVeiculo.value);
   }
 
   handleCancel(): void {
+    debugger;
     this.isVisible = false;
-    this.closeModal.emit(false);
+    this.closeModal.emit(null);
   }
 }
