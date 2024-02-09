@@ -2,17 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { en_US } from 'ng-zorro-antd/i18n';
-import { CommonModule, registerLocaleData } from '@angular/common';
-import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { VeiculosModule } from './pages/veiculos/veiculos.module';
-
-registerLocaleData(en);
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -22,15 +18,16 @@ registerLocaleData(en);
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NzPageHeaderModule,
-    VeiculosModule
+    VeiculosModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    })
   ],
-  providers: [
-    { provide: NZ_I18N, useValue: en_US }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
