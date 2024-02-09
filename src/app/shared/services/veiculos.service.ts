@@ -11,7 +11,11 @@ export class VeiculosService {
 
   constructor(private http: HttpClient) { }
 
-  getVeiculos(filter: string): Observable<any>{
+  getVeiculos(): Observable<any>{
+    return this.http.get<any>(this.URL_API).pipe();
+  }
+
+  getVeiculosFilter(filter: string): Observable<any>{
     return this.http.get<any>(`${this.URL_API}?q=${filter}`).pipe();
   }
 

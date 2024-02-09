@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { NovoVeiculoComponent } from './components/novo-veiculo/novo-veiculo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { VeiculosService } from '../../shared/services/veiculos.service';
 
 @NgModule({
   declarations: [

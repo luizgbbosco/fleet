@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VeiculosService } from '../../shared/services/veiculos.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-veiculos',
@@ -22,27 +22,37 @@ export class VeiculosComponent implements OnInit{
     ){}
 
   ngOnInit(): void {
-    this.searchVeiculos('');
+    this.getVeiculos(null);
     this.searchField.valueChanges.pipe(
       map(value => value.trim()),
       debounceTime(200),
       distinctUntilChanged(),
-      tap(value => this.searchVeiculos(value))
+      tap(value => this.getVeiculos(value))
     ).subscribe();
   }
 
-  searchVeiculos(filter: string): void {
-    console.log(`entrou`, filter);
+  getVeiculos(filter: any): void {
     this.loading = true;
-    this.service.getVeiculos(filter).subscribe(
-      data => {
-        this.dataVeiculos = data;
-        this.loading = false;
-      }, error => {
-        console.error(error);
-        this.loading = false;
-      }, () => {}
-    )
+    if(filter != null){
+      this.service.getVeiculosFilter(filter).subscribe(
+        data => {
+          this.dataVeiculos = data;
+          this.loading = false;
+        }, error => {
+          console.error(error);
+          this.loading = false;
+        }, () => {})
+    }else {
+      this.service.getVeiculos().subscribe(
+        data => {
+          this.dataVeiculos = data;
+          this.loading = false;
+        }, error => {
+          console.error(error);
+          this.loading = false;
+        }, () => {})
+    }
+
   }
 
   public openModal(): void{
@@ -54,12 +64,10 @@ export class VeiculosComponent implements OnInit{
       this.loading = true;
       this.service.createVeiculo(event).subscribe(
         data => {
-          this.searchVeiculos('');
-          this.loading = false;
+          this.resetData();
           this.message.create('success', 'Criar veículo', 'Veículo criado com sucesso.');
         }, error => {
-          this.searchVeiculos('');
-          this.loading = false;
+          this.resetData();
           console.error(error);
         }, () => {}
       )
@@ -71,14 +79,18 @@ export class VeiculosComponent implements OnInit{
     this.loading = true;
     this.service.deleteVeiculo(id).subscribe(
       data => {
-        this.searchVeiculos('');
+        this.resetData();
         this.message.create('success', 'Deletar veículo', 'Veículo deletado com sucesso.');
-        this.loading = false;
       }, error => {
-        this.searchVeiculos('');
+        this.resetData();
         console.error(error);
-        this.loading = false;
       }, () => {}
     )
+  }
+
+  resetData(){
+    this.getVeiculos(null);
+    this.loading = false;
+    this.searchField.reset();
   }
 }

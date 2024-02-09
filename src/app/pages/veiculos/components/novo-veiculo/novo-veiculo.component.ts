@@ -34,7 +34,6 @@ export class NovoVeiculoComponent {
   }
 
   handleCancel(): void {
-    debugger;
     this.isVisible = false;
     this.closeModal.emit(null);
   }

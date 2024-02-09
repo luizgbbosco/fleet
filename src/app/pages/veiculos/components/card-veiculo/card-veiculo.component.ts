@@ -9,13 +9,7 @@ export class CardVeiculoComponent {
   @Input() item: any;
   @Output() deleteVeiculo = new EventEmitter<number>();
 
-  public removeVeiculo(id: number): void {
-    this.deleteVeiculo.emit(id);
-  }
-
-  public cancel(): void {
-    console.log('cancel');
-  }
+  public cancel(): void {}
 
   public confirm(id: number): void {
     this.deleteVeiculo.emit(id);

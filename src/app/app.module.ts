@@ -7,8 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { VeiculosModule } from './pages/veiculos/veiculos.module';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -21,11 +19,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpClientModule,
     BrowserAnimationsModule,
     NzPageHeaderModule,
-    VeiculosModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25
-    })
+    VeiculosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
